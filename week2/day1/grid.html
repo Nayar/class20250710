@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .gridcontainer {
+            border: 2px solid salmon;
+            display: grid;
+            grid-template-rows: 70px 140px 70px;
+            grid-template-columns: repeat(3,1fr);
+        }
+
+        .gridcontainer > div {
+            background-color: aquamarine;
+            margin: 1px;
+        }
+    </style>
+</head>
+<body>
+    <div class="gridcontainer">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+    </div>
+</body>
+</html>
