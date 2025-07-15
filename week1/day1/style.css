@@ -13,6 +13,7 @@ p {
 .formula {
     color: red;
     border: 2px solid;
+    text-decoration: underline;
 }
 
 #swim {
