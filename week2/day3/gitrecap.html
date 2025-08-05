@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git Branch</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+    <style>
+        body {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Git Commands</h1>
+        <ul>
+            <li>git status
+                <p>tells us which files have been changed and which branch we are on</p>
+            </li>
+            <li>git init
+                <p>Creates a new .git folder in the repository</p>
+            </li>
+            <li>
+                git add {filename}
+                <p>stages a file, i.e. adds the changes of the file in a box</p>
+            </li>
+            <li>
+                git commit -m '{commit message}'
+                <p>creates a new commit i.e. seals the box and put a message on it.</p>
+            </li>
+            <li>git push {remotename} {branchname}
+                <p>sends boxes to remote location</p>
+            </li>
+            <li>git pull {remotename} {branchname}
+                <p>sends boxes to remote location</p>
+            </li>
+            <li>git checkout {filename}
+                <p>reverts the file to the last commit state</p>
+            </li>
+            <li>git clone {url}</li>
+            <li>git checkout -b {branchnametobecreated}</li>
+            <li>git checkout {tobranchwewant}</li>
+            <li>git merge {branchname}<p>brings all the changes from another branch into this branch</p></li>
+        </ul>
+    </div>
+</body>
+</html>

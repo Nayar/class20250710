@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .flexcontainer {
+            border: 2px solid salmon;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .flexcontainer > div {
+            background-color: aqua;
+            margin: 1px;
+            height: 75px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="flexcontainer">
+        <div>1</div>
+        <div style="height: 150px;width: 80%;">2</div>
+        <div>3</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+h1{
+    color: blue;
+}
+
+p {
+    color: brown;
+}
+
+#favparagraph {
+    color: pink;
+}
+
+.formula {
+    color: red;
+    border: 2px solid;
+    text-decoration: underline;
+}
+
+#swim {
+    color: blue;
+}
+
+h2,h3 {
+    color: aqua;
+    font-size: 20px;
+}
+
+div > p {
+    font-size: 30px;
+}
