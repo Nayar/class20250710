@@ -5,14 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
-        let myCarBrand = "Toyota";
-        let firstName = 'Will';
-        let lastName = "Smith"
-        let fullName = firstName + " " + lastName;
-        console.log(fullName)
 
-        // console.log is going to display the contents in the console
-        
+        // CREATE READ UPDATE DELETE
+
+        // array > table
+        // contents > rows
+
+        // let student1 = "Abraham"
+        // let student2 = "John"
+        // let student3 = "Rita"
+        // let studentX    
+
+        // students is variable containing an array of strings. 
+
+        // Created a list of students
+        let students = ["Abraham", "John", "Rita"]
+        let index    = [ 0,          1,     2   ]
+        // let ages = [35,40,20]
+
+        // Read full array
+        console.log(students)
+
+        // Read item at position 3
+        console.log(students[2])
+
+        // Create will and add to array
+        students.push("Will")
+
+        console.log(students)
+        // Update John to Johnathan
+        students[1] = "Johnathan"
+        //students.pop()
+
+        students.splice(2,1)
+        console.log(students)
+
+
     </script>
 </head>
 <body>
