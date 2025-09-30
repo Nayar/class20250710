@@ -1,30 +1,34 @@
-class BankAccount {
-    constructor(first_name, last_name, type_of_account) {
-        this.first_name = first_name
-        this.last_name = last_name
-        this.type_of_account = type_of_account
-        this.balance = 0 // this should be private
+class Vehicle {
+    constructor(make,model,color, registration_mark){
+        this.make = make
+        this.model = model
+        this.color = color
+        this.registration_mark = registration_mark
     }
 
-    deposit(amount){ 
-        this.balance = this.balance + amount
-    }
-
-    withdraw(amount){
-        if(amount <= this.balance){
-            this.balance = this.balance - amount
-        }
-        else {
-            console.log("insufficient amount to withdraw")
-        }
-    }
-
-    checkBalance(){
-        console.log('Hello ' +  this.first_name + ". You currently have " + this.balance)
+    horn() {
+        console.log("beep beep")
     }
 }
 
-yajnee = new BankAccount("Yajnee","Ahota", 'Savings')
-yajnee.deposit(2500)
-yajnee.withdraw(1000)
-yajnee.checkBalance()
+class Car extends Vehicle {
+    
+}
+
+class Ambulance extends Vehicle{
+    constructor(make,model,color, registration_mark,staffs) {
+        super(make,model,color, registration_mark) // calls the constructor from the parent
+        this.staffs = staffs
+    }
+    siren() {
+        console.log("beep boop")
+    }
+}
+
+let mycar = new Car('VW',"Polo",'Gray','4322 SP 22')
+let candosambulance = new Ambulance('Mercedes','C','White',"4324 JN 20",3) // this ambulance can take 3 staffs
+
+mycar.horn() // return "beep beep"
+// press horn button
+
+candosambulance.siren() // return "beep boop"

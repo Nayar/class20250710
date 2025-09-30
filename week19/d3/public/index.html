@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // Does a GET on /api/students
+        fetch("/api/students", {
+            method: "POST",
+            body: JSON.stringify({"name" : "Sanju"}),
+            headers: {
+                "Content-type" : "application/json"
+            }
+        }).then(function(data) {
+            return data.json()
+        }).then(function (data) {
+            console.log(data)
+        })
+    </script>
+</head>
+<body>
+    <h1>Welcome to Express JS class</h1>
+    <ul>
+        <li><a href="/api/students">List of students</a></li>
+        <li><a href="/api/teachers">List of teachers</a></li>
+    </ul>
+</body>
+</html>
