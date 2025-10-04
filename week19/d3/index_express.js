@@ -1,54 +1,25 @@
 const express = require('express') // found in node_modules/express
 const app = express()
 
+const student_routes = require("./routes/students.js")
 app.use(express.json()); // this will allow POST to receive JSON data
 
-let students = [
-    {
-        "id" : 1,
-        "name" : "Abraham"
-    },
-    {
-        "id" : 2,
-        "name" : "Jessni"
-    },
-    {
-        "id" : 3,
-        "name" : "John"
-    },
-    {
-        "id" : 4,
-        "name" : "Sunny"
+app.use("/api/students",(request, response, next) => {
+    var ip = request.headers['x-forwarded-for'] || request.socket.remoteAddress 
+    console.log(ip)
+    console.log("Hello Middleware");
+    if(ip == "::ffff:192.168.100.177"){
+        response.redirect("/login")
+    }else{
+        next();
     }
-]
+});
 
 app.get('/', function(request, response) {
     response.sendFile(__dirname + "/public/index.html")
 })
 
-app.get("/api/students", function(request,response){
-    console.log(request.query)
-    if(request.query.filter){
-        student = students.filter((student) => student.name.toLocaleLowerCase().includes(request.query.filter.toLocaleLowerCase()))
-        response.json(student)
-    }
-    else{
-        response.json(students)
-    }
-})
-
-app.get("/api/students/:id", (request,response) => {
-    student = students.filter((student) => student.id == request.params.id)
-    response.json(student)
-})
-
-// READ: GET
-// CREATE: POST
-// CRUD
-app.post("/api/students", function(request,response) {
-    students.push(request.body)
-    response.json({"message" : "okay"})
-})
+app.use('/api/v1.0/students',student_routes)
 
 app.get("/api/teachers", function(request,response){
     response.json([
