@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // What does fetch return?
+        fetch("/api/randomquestion")
+        // what parameter does then take
+        .then(function(data) {
+            return data.json()
+        })
+        .then(function(obj){
+            // obj = {"emoji" : "😀", "answers": ["sad","smile","cry"]}
+            console.log(obj)
+            document.getElementById('emoji').innerHTML = obj.emoji
+            document.getElementById("option1").children[0].value = obj.answers[0]
+            document.getElementById("option1").children[1].innerHTML = obj.answers[0]
+            document.getElementById("option2").children[0].value = obj.answers[1]
+            document.getElementById("option2").children[1].innerHTML = obj.answers[1]
+            document.getElementById("option3").children[0].value = obj.answers[2]
+            document.getElementById("option3").children[1].innerHTML = obj.answers[2]
+        })
+
+        function checkanswer(event){
+            event.preventDefault()
+            let data = {
+                "emoji" : document.getElementById('emoji').innerHTML,
+                "chosenanswer" : document.forms[0].answer.value
+            }
+            fetch("/api/checkanswer",{
+                method: "POST",
+                body: JSON.stringify(data),
+                headers: {
+                    "Content-type": "application/json"
+                }
+            })
+            .then((data) => data.json())
+            .then(data => alert(JSON.stringify(data)))
+        }
+    </script>
+</head>
+<body>
+    <h1>Welcome to emoji game</h1>
+    <h2>What is this emoji?</h2>
+    <h3 id="emoji"></h3>
+
+    <form onsubmit="checkanswer(event)">
+        <ul>
+            <li id="option1">
+                <input type="radio" value="" name="answer"><span></span>
+            </li>
+            <li id="option2">
+                <input type="radio" value="" name="answer"><span></span>
+            </li>
+            <li id="option3">
+                <input type="radio" value="" name="answer"><span></span>
+            </li>
+            <li>
+                <input type="submit" value="submit"/>
+            </li>
+        </ul>
+    </form>
+</body>
+</html>
