@@ -8,6 +8,17 @@ app.use(session({
   saveUninitialized: true
 }))
 
+let users = [
+    {
+        "username" : "Nayar",
+        "password" : "di"
+    },
+    {
+        "username" : "Abraham",
+        "password" : "alsodi"
+    }
+]
+
 app.use(express.json());
 
 app.get("/",function(req,res){
@@ -25,8 +36,20 @@ app.get("/api/courses",function(req,res){
 
 app.get("/api/login", function(req,res){
     // setting the session.user variable
-    req.session.user = "user 1"
-    res.json({"status":"logged in"})
+    let user = users.filter(function(user) {
+        if(user.username == req.query.username && user.password == req.query.password)
+            return true
+        else
+            return false
+    })
+    console.log(user)
+    if(user.length > 0){
+        req.session.user = user[0]
+        res.json({"status":"logged in", user: user[0]})
+    }
+    else {
+        res.json({"status":"incorrect username or password"})
+    }
 })
 
 app.listen(5005, function(){
