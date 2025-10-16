@@ -1,0 +1,20 @@
+/* CSS */
+.spin {
+  display: inline-block;            /* allow transforms without layout issues */
+  width: 150px;                     /* optional: change to suit */
+  height: auto;
+  transform-origin: 50% 50%;        /* rotate around center */
+}
+
+/* Keyframes */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Accessibility: respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .spin {
+    animation: none;
+  }
+}
