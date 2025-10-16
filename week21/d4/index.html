@@ -5,23 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
-        // What does fetch return?
-        fetch("/api/randomquestion")
-        // what parameter does then take
-        .then(function(data) {
-            return data.json()
-        })
-        .then(function(obj){
-            // obj = {"emoji" : "😀", "answers": ["sad","smile","cry"]}
-            console.log(obj)
-            document.getElementById('emoji').innerHTML = obj.emoji
-            document.getElementById("option1").children[0].value = obj.answers[0]
-            document.getElementById("option1").children[1].innerHTML = obj.answers[0]
-            document.getElementById("option2").children[0].value = obj.answers[1]
-            document.getElementById("option2").children[1].innerHTML = obj.answers[1]
-            document.getElementById("option3").children[0].value = obj.answers[2]
-            document.getElementById("option3").children[1].innerHTML = obj.answers[2]
-        })
+        async function fetch_question(){
+            // What does fetch return?
+            try{
+                let data = await fetch("/api/randomquestion1")
+                let obj = await data.json() // returns a promise
+                document.getElementById('emoji').innerHTML = obj.emoji
+                document.getElementById("option1").children[0].value = obj.answers[0]
+                document.getElementById("option1").children[1].innerHTML = obj.answers[0]
+                document.getElementById("option2").children[0].value = obj.answers[1]
+                document.getElementById("option2").children[1].innerHTML = obj.answers[1]
+                document.getElementById("option3").children[0].value = obj.answers[2]
+                document.getElementById("option3").children[1].innerHTML = obj.answers[2]
+            }
+            catch(error) {
+                console.log("error")
+                console.log(error)
+            }
+        }
+        fetch_question()
 
         function checkanswer(event){
             event.preventDefault()
@@ -29,15 +31,21 @@
                 "emoji" : document.getElementById('emoji').innerHTML,
                 "chosenanswer" : document.forms[0].answer.value
             }
-            fetch("/api/checkanswer",{
+            fetch("/api/checkanswer0",{
                 method: "POST",
                 body: JSON.stringify(data),
                 headers: {
                     "Content-type": "application/json"
                 }
             })
-            .then((data) => data.json())
+            .then(function(data){ 
+                return data.json()
+            })
             .then(data => alert(JSON.stringify(data)))
+            .catch(error => {
+                console.log("inside catch")
+                console.log(error)
+            })
         }
     </script>
 </head>

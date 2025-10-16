@@ -2,6 +2,7 @@ const express = require("express")
 const app = express()
 
 app.use(express.json());
+const axios = require('axios')
 
 const knex = require('knex')({
     client: 'pg',
@@ -65,6 +66,13 @@ app.delete("/api/students/:id", (req,res) => {
     knex('students').where({id:student_id}).del().then(function(data) {
         res.json({'status':"ok"})
     })
+})
+
+app.get("/api/posts", (req,res) => {
+    axios.get('https://jsonplaceholder.typicode.com/posts').then(function(data){
+        console.log(data['data'])
+        res.json(data['data'])
+    })    
 })
 
 

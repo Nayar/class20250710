@@ -34,3 +34,16 @@ app.listen(5005,function(){
     console.log("server is running")
 })
 
+let students = [{
+    "name" : "Abraham"
+},{//. electricity shut down
+    "name" : "Nayar"
+}]
+
+fs.writeFile('students.json', JSON.stringify(students), 'utf8', (err) => {
+    if (err) {
+        console.error('Error writing file:', err);
+    } else {
+        console.log('JSON data saved to user.json');
+    }
+});

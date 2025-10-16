@@ -15,11 +15,19 @@ app.get("/",function(req,res){
 })
 
 app.get("/api/courses",function(req,res){
-    console.log(req.session.user)
-    res.json([{
-        "name": "Python 1",
-        "logged_in_user" : "user:" + req.session.user
-    }])
+    if(req.session.user){
+        res.json([
+            {
+                "name": "Python 1",
+            },
+            {
+                "name": "Javascript 1",
+            }
+        ])
+    }
+    else {
+        res.status(403).redirect("/login")
+    }
 })
 
 app.get("/api/login", function(req,res){
