@@ -16,14 +16,7 @@ app.get("/",function(req,res){
 
 app.get("/api/courses",function(req,res){
     if(req.session.user){
-        res.json([
-            {
-                "name": "Python 1",
-            },
-            {
-                "name": "Javascript 1",
-            }
-        ])
+        res.json([{"name": "Python 1"},{"name": "Javascript 1"}])
     }
     else {
         res.status(403).redirect("/login")
