@@ -1,5 +1,7 @@
 import React from "react";
 import Car from "./Car"
+import SearchBar from "./SearchBar";
+import ListCars from "./ListCars";
 
 const listCars = [
   {
@@ -64,15 +66,8 @@ class App extends React.Component {
     return (
       <>
         <h1>Welcome to my car rental business</h1>
-        <select onChange={this.brandHasChanged}>
-            { brands.map(brand => {
-              return <option value={brand}>{brand}</option>})}
-        </select>
-        <h2>These are the only {this.state.filter} cars in our shop</h2>
-        { listCars.filter(car => car.brand == this.state.filter).map(car => {
-            return <Car key={car.id} brand={car.brand} model={car.name}></Car>
-          }) 
-        }
+        <SearchBar brands={brands} onchange={this.brandHasChanged}/>
+        <ListCars filter={this.state.filter} list={listCars}/>
       </>
     )
   }
