@@ -39,6 +39,8 @@ const listCars = [
   }
 ]
 
+let brands = Array.from(new Set(listCars.map(car => car.brand)))
+
 class App extends React.Component {
   render() {
     return (
@@ -47,9 +49,10 @@ class App extends React.Component {
         {/* Peugeot, BMW, Mercedes */}
         <select>
           {/* value is what we want to send. Inside option is only for display */}
-            <option value="peugeot">Peugeot</option>
-            <option value="bmw">BMW</option>
-            <option value="mercedes">Mercedes</option>
+            {
+              brands.map(brand => {
+              return <option value={brand}>{brand}</option>})}
+            
         </select>
         <h2>These are the only peugeot car in our shop</h2>
         { 
