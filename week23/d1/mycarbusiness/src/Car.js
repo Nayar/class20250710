@@ -9,9 +9,10 @@
 
 import { useEffect, useState } from "react"
 
-function Car() {
+function Car(props) {
     // first variable to read. second variable to write/update
-    const [make, setMake] = useState("BMW")
+    const [make, setMake] = useState(props.brand)
+    const [model, setModel] = useState(props.model)
     const [speed,  setSpeed] = useState(0)
     const [sunrise, setSunrise] = useState("00:00")
     const [city, setCity] = useState("")
@@ -47,8 +48,9 @@ function Car() {
     }
 
     return (
-        <>
-            <h1>I am a car of make {make} going at {speed}. I will reach  {city} at sunrise at {sunrise} O'clock</h1>
+        <>  
+            <h3>{make} {model}</h3>
+            <p>I am going at {speed}. I will reach  {city} at sunrise at {sunrise} O'clock</p>
             <button onClick={accelerate}>Accelerate</button>
             <button onClick={decelerate}>decelerate</button>
             <button onClick={setNewYork}>Set New Youk as Destination</button>
