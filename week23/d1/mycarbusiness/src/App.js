@@ -36,28 +36,41 @@ const listCars = [
     name: "12 (sw)",
     year: "1972-01-01",
     origin: "Europe"
+  },
+  {
+    id: 6,
+    brand: "peugeot",
+    name: "206",
+    year: "1972-01-01",
+    origin: "Europe"
   }
 ]
 
 let brands = Array.from(new Set(listCars.map(car => car.brand)))
 
 class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      filter: "ford"
+    }
+  }
+
+  brandHasChanged = (event) => {
+    this.setState({filter: event.target.value})
+  }
+
   render() {
     return (
       <>
         <h1>Welcome to my car rental business</h1>
-        {/* Peugeot, BMW, Mercedes */}
-        <select>
-          {/* value is what we want to send. Inside option is only for display */}
-            {
-              brands.map(brand => {
+        <select onChange={this.brandHasChanged}>
+            { brands.map(brand => {
               return <option value={brand}>{brand}</option>})}
-            
         </select>
-        <h2>These are the only peugeot car in our shop</h2>
-        { 
-          listCars.map(car => {
-            return <Car brand={car.brand} model={car.name}></Car>
+        <h2>These are the only {this.state.filter} cars in our shop</h2>
+        { listCars.filter(car => car.brand == this.state.filter).map(car => {
+            return <Car key={car.id} brand={car.brand} model={car.name}></Car>
           }) 
         }
       </>
