@@ -2,6 +2,7 @@ import React from "react";
 import Car from "./Car"
 import SearchBar from "./SearchBar";
 import ListCars from "./ListCars";
+import ErrorBoundary from "./ErrorBoundary";
 
 const listCars = [
   {
@@ -67,6 +68,7 @@ class App extends React.Component {
       <>
         <h1>Welcome to my car rental business</h1>
         <SearchBar brands={brands} onchange={this.brandHasChanged}/>
+   
         <ListCars filter={this.state.filter} list={listCars}/>
       </>
     )

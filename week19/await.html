@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let goodGrades = 93;
+
+        let endSemester = new Promise((resolve, reject) => {
+            if (goodGrades > 90) {
+                resolve("Computer");
+            } else if (goodGrades => 80 && goodGrades <= 89) {
+                resolve("Phone");
+            } else {
+                reject("I won't get the gift");
+            }
+        })
+
+        const checkRequest = () => {
+            console.log('test 2');
+            try {
+                endSemester
+                    .then(value => {
+                        hey; //variable not defined
+                        console.log("I got an amazing gift : A ", value);
+                    }).catch();
+            } catch (err) {
+                console.log("In the catch ", err)
+            }
+        }
+        checkRequest()
+        
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

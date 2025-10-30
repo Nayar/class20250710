@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- action determines the URL where we should do the GET and POST-->
+    <form method="POST" action="/login">
+        <label>Username</label><input name="username" type="text"/>
+        <label>Password</label><input name="password" type="password"/>
+        <input type="submit" value="Submit"/>
+    </form>
+    <!-- if no method is defined, it is assumed GET-->
+    <form method="GET">
+        <label>Name</label><input name="name" type="text"/>
+        <label>Address</label><input name="address" type="text"/>
+        <label>Username</label><input name="username" type="text"/>
+        <label>Password</label><input name="password" type="password"/>
+        <input type="submit" value="Submit"/>
+    </form>
+</body>
+</html>

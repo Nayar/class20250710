@@ -28,10 +28,13 @@ function Car(props) {
 
     // this will run whenever the page has finished loading or rerendered
     useEffect(function(){
-        fetch('https://api.sunrise-sunset.org/json?lat='+ lat +'&lng=' + lng)
+        fetch('https://api.sunrise-sunset.or/json?lat='+ lat +'&lng=' + lng)
         .then(data => data.json())
         .then(data => {
             setSunrise(data.results.sunrise)
+        })
+        .catch(error => {
+            throw new Error('Unable to fetch sunrise');
         })
     })
 

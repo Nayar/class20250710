@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Events</title>
+    <script>
+        // function hello() {
+        //     alert("Welcome to the class")
+
+        // }
+
+        let hello = function(e) {
+            //alert("Welcome to the class")
+            console.log(e.target.innerHTML)
+        }
+
+        let delete_student = function(event) {
+            let num = event.target.innerHTML.substring(15)
+            document.getElementById("tr" + num).remove()
+        }
+
+        let students = [
+            {
+                "name" : "Nayar",
+                "address" : "Curepipe"
+            },
+            {
+                "name" : "Abraham",
+                "address" : "Port Louis"
+            },
+            {
+                "name" : "Ritesh",
+                "address" : "Moka"
+            }
+        ]
+
+        window.onload = function() {
+            for(let i = 0; i < students.length;i++){
+                let tr = document.createElement("tr")
+                tr.setAttribute("id","tr"+ i)
+                let td1 = document.createElement("td")
+                let td2 = document.createElement("td")
+                let deletebnt = document.createElement("button")
+                deletebnt.innerHTML = "delete student " + i
+                deletebnt.addEventListener('click',delete_student)
+
+                tr.append(td1)
+                tr.append(td2)
+                tr.append(deletebnt)    
+                td1.textContent = students[i].name
+                td2.textContent = students[i].address
+                document.getElementById("mytable").append(tr)
+            }
+
+            //document.getElementById('mybtn').onclick = hello
+            // eventname, function to call when event happens
+            document.getElementById('mybtn').addEventListener('click',hello)
+            document.getElementById('clearbtn').addEventListener('click',hello)
+            document.forms.addnewstudents.addEventListener("submit", addnewstudent)
+        }
+
+        function addnewstudent(event) {
+            event.preventDefault()
+            let i = 6;
+            let tr = document.createElement("tr")
+                tr.setAttribute("id","tr"+ i)
+                let td1 = document.createElement("td")
+                let td2 = document.createElement("td")
+                let deletebnt = document.createElement("button")
+                deletebnt.innerHTML = "delete student " + i
+                deletebnt.addEventListener('click',delete_student)
+
+                tr.append(td1)
+                tr.append(td2)
+                tr.append(deletebnt)    
+                td1.textContent = "Yash"
+                td2.textContent = "Floreal"
+                document.getElementById("mytable").append(tr)
+        }
+    </script>
+</head>
+<body>
+    <h1>Welcome to DOM Events Recap</h1>
+    <h2 id="saturday">This a saturday class</h2>
+    <table id="mytable">
+    </table>
+    
+    <form name="addnewstudents">
+        <label>fname</label><input name="name"/>
+        <label>address</label><input name="address"/>
+        <input type="submit" value="Submit">
+    </form>
+    <button id="mybtn"> Add new row</button>
+    <button id="clearbtn"> Clear all</button>
+</body>
+</html>
