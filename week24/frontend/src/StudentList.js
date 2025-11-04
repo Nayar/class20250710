@@ -5,7 +5,7 @@ function StudentList() {
 
     useEffect(() => {
         // Make HTTP call or other code
-        fetch("/api/students")
+        fetch("http://localhost:5001/api/students")
         .then(data => data.json())
         .then(data => {
             setStudents(data)
@@ -14,7 +14,7 @@ function StudentList() {
     },[]);
     return (
         <>
-            <h2>I have the following students</h2>
+            <h2>I have the following students. Now can i make changes dynamically</h2>
             {
                 students.map(student => {
                     return <h3>{ student.name }</h3>

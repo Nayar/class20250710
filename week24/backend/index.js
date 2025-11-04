@@ -5,8 +5,10 @@
 // PATCH /api/students/<student_id>   --- update
 
 const express = require('express')
+var cors = require('cors')
 const app = express()
 
+app.use(cors())
 app.use(express.static('../frontend/build/'));
 
 app.get('/api/students', (req, res) => {
@@ -22,3 +24,6 @@ app.get('/api/students', (req, res) => {
 app.listen(5001, () => {
     console.log('server is listening on port 5001')
 })
+
+// bakend: localhost: 5001
+// frontend : localhost: 3001
